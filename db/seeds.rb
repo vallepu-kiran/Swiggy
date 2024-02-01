@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+if AdminUser.count == 0
+    AdminUser.create!(
+        email: 'admin@swiggy.com',
+        password: 'password',
+        password_confirmation: 'password', 
+    )
+end
