@@ -1,0 +1,40 @@
+.a_tag{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+    -ms-text-size-adjust: none;
+    outline: none;
+    text-decoration: none;
+    color: #3d4152;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: arial,Helvetica Neue,sans-serif;
+    line-height: 1.4;
+    letter-spacing: 0.4px;
+    -moz-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    width: 49px;
+    height:19px;
+    align-items: center;
+    padding-left: 5px;
+
+    
+}
+._1GTCc{
+   
+    position: relative;
+    stroke: currentColor;
+    fill: #3d4152;
+    stroke-width: 0;
+    font-size: px;
+    width: 21px;
+    height:21px;
+
+
+}
+
+
