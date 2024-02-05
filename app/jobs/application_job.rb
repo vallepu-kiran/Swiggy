@@ -1,3 +1,4 @@
+# This is the ApplicationJob class, the base class for all jobs in your application.
 class ApplicationJob < ActiveJob::Base
   # Automatically retry jobs that encountered a deadlock
   # retry_on ActiveRecord::Deadlocked
