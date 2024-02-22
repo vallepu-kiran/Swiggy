@@ -73,3 +73,12 @@ end
 gem "devise", "~> 4.9"
 gem "sassc-rails"
 gem 'bootstrap', '~> 5.3.2'
+
+# Use jquery as the JavaScript librar
+gem 'jquery-rails'
+
+# Use jquery-ui for pretty UI
+gem 'jquery-ui-rails'
+
+# Use Sass to process CSS
+gem "sassc-rails"
