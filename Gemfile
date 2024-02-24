@@ -71,7 +71,6 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-gem "sassc-rails"
 gem 'bootstrap', '~> 5.3.2'
 
 # Use jquery as the JavaScript librar

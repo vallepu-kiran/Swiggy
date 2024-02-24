@@ -1,0 +1,7 @@
+<div class="c_1">
+<h1>Your Shopping Cart</h1>
+<% @cart.cart_items.each do |cart_item| %>
+  <p><%= cart_item.item.name %> - Quantity: <%= cart_item.quantity %> 
+  <%= button_to '-', remove_item_cart_path(id: cart_item.id), method: :delete %></p>
+<% end %>
+</div>
