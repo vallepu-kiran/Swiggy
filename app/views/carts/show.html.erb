@@ -1,7 +1,11 @@
-<div class="c_1">
-<h1>Your Shopping Cart</h1>
-<% @cart.cart_items.each do |cart_item| %>
-  <p><%= cart_item.item.name %> - Quantity: <%= cart_item.quantity %> 
-  <%= button_to '-', remove_item_cart_path(id: cart_item.id), method: :delete %></p>
-<% end %>
-</div>
+  <div class="c_1">
+  <h1>Your Shopping Cart</h1>
+  <% @cart.cart_items.each do |cart_item| %>
+    <p>
+      <%= cart_item.item.name %> - Quantity: <%= cart_item.quantity %>
+      <%= form_for(cart_item, url: remove_item_cart_path(cart_item), method: :post) do |f| %>
+        <%= f.hidden_field :item_id, value: cart_item.item.id %>
+        <%= f.submit "-"%>
+      <% end %>
+    </p>
+  <% end %>

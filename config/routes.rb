@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     post 'add_item', on: :member
   end
   resources :carts do
-    
-    delete 'remove_item', on: :member
+    post 'remove_item', on: :member
     post 'add_to_cart', on: :member
     post 'increment_cart_quantity', on: :member
     post 'decrement_cart_quantity', on: :member

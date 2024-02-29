@@ -1,2 +1,2 @@
-$("#quantity-buttons-<%= params[:item_id] %>").empty()
-$("#quantity-buttons-<%= params[:item_id] %>").html("<%= escape_javascript render(:partial => 'quantity_buttons') %>")
+$("#quantity-buttons-<%= @item.id %>").empty()
+$("#quantity-buttons-<%= @item.id %>").html("<%= escape_javascript render(:partial => 'quantity_buttons', locals: { cart_item: @cart_item, item: @item }) %>")

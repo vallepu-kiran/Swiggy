@@ -1,10 +1,9 @@
-    
-<%= form_for(:item, url: '/fdsaf', method: :post, remote: true) do |f| %>
-   
-    <%= f.submit "-", class: "button" %>
-  <% end %>
-
-  <%= form_for(:item, url: '/fdsasd', method: :post, remote: true) do |f| %>
-    
-    <%= f.submit "+", class: "button" %>
-  <% end %>
+ <div class="row">  
+<%= form_for(:item, url: decrement_cart_quantity_cart_path(id: item.id), method: :post, remote: true) do |f| %> 
+  <%= f.submit "-"%>
+<% end %>
+<%= cart_item.quantity %>
+<%= form_for(:item, url: increment_cart_quantity_cart_path(id: item.id), method: :post, remote: true) do |f| %>
+  <%= f.submit "+" %>
+<% end %>
+</div>
