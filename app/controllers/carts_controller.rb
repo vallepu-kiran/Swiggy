@@ -6,7 +6,7 @@ class CartsController < ApplicationController
     @items_in_cart = @cart.cart_items.includes(:item)
     @items_in_cart = current_user.cart.cart_items.includes(:item)
     @total_quantity = @items_in_cart.compact.sum { |item| item.quantity.to_i }
-
+    
   end
 
   def add_to_cart
@@ -26,7 +26,11 @@ class CartsController < ApplicationController
 
     @cart_item.increment!(:quantity)
     @cart_item.reload
-    render 'add_to_cart'
+    if params[:item][:return_type] == 'cart'
+      render 'refresh_cart'
+    else
+      render 'add_to_cart'
+    end
   end
 
   def decrement_cart_quantity
@@ -39,7 +43,11 @@ class CartsController < ApplicationController
     else
       @cart_item.destroy
     end
-    render 'add_to_cart'
+    if params[:item][:return_type] == 'cart'
+      render 'refresh_cart'
+    else
+      render 'add_to_cart'
+    end
   end
   def remove_item
     item_id = params.dig(:cart_item, :item_id)

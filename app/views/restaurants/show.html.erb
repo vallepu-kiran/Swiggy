@@ -25,7 +25,7 @@
       
     <div id="quantity-buttons-<%= item.id %>">
       <% if @cart.cart_items.where(item_id: item.id).exists? %>
-        <%= render(:partial => 'carts/quantity_buttons', locals: { cart_item: @cart.cart_items.find_by(item_id: item.id), item: item}) %>
+        <%= render(:partial => 'carts/quantity_buttons', locals: { cart_item: @cart.cart_items.find_by(item_id: item.id), item: item, return_type: 'buttons'}) %>
       <% else %>
         <%= form_for(item, url: add_to_cart_cart_path(@restaurant, item_id: item.id), method: :post, remote: true) do |f| %>
           <%= f.hidden_field :item_id, value: item.id %>

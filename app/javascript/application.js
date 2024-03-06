@@ -2,4 +2,4 @@
 import "jquery"
 import "jquery_ujs"
 import "./jquery_ui"
-import "./cart"
+import "./cart.js"
