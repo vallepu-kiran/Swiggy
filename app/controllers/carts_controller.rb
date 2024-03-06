@@ -4,7 +4,9 @@ class CartsController < ApplicationController
 
   def show
     @items_in_cart = @cart.cart_items.includes(:item)
-    
+    @items_in_cart = current_user.cart.cart_items.includes(:item)
+    @total_quantity = @items_in_cart.compact.sum { |item| item.quantity.to_i }
+
   end
 
   def add_to_cart
@@ -27,26 +29,6 @@ class CartsController < ApplicationController
     render 'add_to_cart'
   end
 
-  def remove_item
-    item_id = params.dig(:cart_item, :item_id) 
-  
-    if item_id
-      item = Item.find(item_id)
-      cart_item = @cart.cart_items.find_by(item: item)
-  
-      if cart_item
-        cart_item.quantity -= 1
-        cart_item.quantity.zero? ? cart_item.destroy : cart_item.save
-        flash[:notice] = 'Item removed from cart'
-      else
-        flash[:alert] = 'Item not found in the cart'
-      end
-    else
-      flash[:alert] = 'Item ID not provided'
-    end
-  
-    redirect_to cart_path
-  end
   def decrement_cart_quantity
     @item = Item.find(params[:id])
     @cart_item = @cart.cart_items.find_or_create_by(item: @item)
@@ -58,8 +40,41 @@ class CartsController < ApplicationController
       @cart_item.destroy
     end
     render 'add_to_cart'
-
   end
+  def remove_item
+    item_id = params.dig(:cart_item, :item_id)
+  
+    if item_id
+      item = Item.find(item_id)
+      cart_item = @cart.cart_items.find_by(item: item)
+  
+      if cart_item
+        cart_item.quantity -= 1
+        cart_item.quantity.zero? ? cart_item.destroy : cart_item.save
+  
+        respond_to do |format|
+          format.html {
+            flash[:notice] = 'Item removed from cart'
+            redirect_to cart_path
+          }
+          format.js
+        end
+      else
+        flash[:alert] = 'Item not found in the cart'
+        respond_to do |format|
+          format.html { redirect_to cart_path }
+          format.js
+        end
+      end
+    else
+      flash[:alert] = 'Item ID not provided'
+      respond_to do |format|
+        format.html { redirect_to cart_path }
+        format.js
+      end
+    end
+  end
+  
 
   private
 
@@ -67,7 +82,3 @@ class CartsController < ApplicationController
     @cart = current_user.cart || current_user.build_cart
   end
 end
-
-
-
-

@@ -1,0 +1,14 @@
+<div id="search-bar" style="display: none;">
+  <%= form_tag(search_index_path, method: :get, class: 'search-form') do %>
+    <%= text_field_tag :query, params[:query], placeholder: 'Search restaurants...' %>
+    <%= submit_tag 'Search' %>
+  <% end %>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#search-toggle').click(function() {
+      $('#search-bar').toggle();
+    });
+  });
+</script>

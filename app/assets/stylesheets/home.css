@@ -108,3 +108,17 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
   }
+  ._2MSid {
+    fill: #fff;
+    stroke-width: 2px;
+    stroke: #282c3f;
+  }
+  ._2vS77 {
+  position: absolute;
+  top: 50%;
+  left: 86%;
+  margin-left: 5px;
+  transform: translate(-50%,-50%);
+  font-size: 14px;
+  font-weight: 600;
+  }

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   get 'items/index'
   get 'carts/show'
   devise_for :admin_users
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     post 'increment_cart_quantity', on: :member
     post 'decrement_cart_quantity', on: :member
   end
+  get 'search', to: 'search#index'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
