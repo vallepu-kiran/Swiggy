@@ -53,10 +53,8 @@ class CartsController < ApplicationController
     item_id = params.dig(:cart_item, :item_id)
     if item_id
       item = find_item(item_id)
-  
       if item
         cart_item = find_cart_item(item)
-  
         if cart_item
           update_cart_item(cart_item)
         else
