@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
+  get 'search/index'
+  get 'items/index'
+  get 'carts/show'
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root"home#index"
+  resources :restaurants do
+    post 'add_item', on: :member
+  end
+  resources :carts do
+    post 'remove_item', on: :member
+    post 'add_to_cart', on: :member
+    post 'increment_cart_quantity', on: :member
+    post 'decrement_cart_quantity', on: :member
+  end
+  get 'search', to: 'search#index'
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

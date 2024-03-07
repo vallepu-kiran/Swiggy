@@ -1,0 +1,6 @@
+<!-- app/views/items/index.html.erb -->
+<% @items.each do |item| %>
+  <div class="item">
+    <h4><%= link_to item.name, cart_add_item_path(item), method: :post %></h4>
+  </div>
+<% end %>

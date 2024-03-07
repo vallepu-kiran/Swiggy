@@ -1,0 +1,8 @@
+<% if flash[:notice] %>
+  // Item was successfully removed
+  alert('<%= j flash[:notice] %>');
+  // Add code to update the DOM or perform other actions
+<% else %>
+  // Item not found or other error
+  alert('<%= j flash[:alert] %>');
+<% end %>
