@@ -52,31 +52,62 @@ class CartsController < ApplicationController
   def remove_item
     item_id = params.dig(:cart_item, :item_id)
     if item_id
-      item = Item.find(item_id)
-      cart_item = @cart.cart_items.find_by(item: item)
-      if cart_item
-        cart_item.quantity -= 1
-        cart_item.quantity.zero? ? cart_item.destroy : cart_item.save
-        respond_to do |format|
-          format.html {
-            flash[:notice] = 'Item removed from cart'
-            redirect_to cart_path
-          }
-          format.js
+      item = find_item(item_id)
+  
+      if item
+        cart_item = find_cart_item(item)
+  
+        if cart_item
+          update_cart_item(cart_item)
+        else
+          handle_item_not_found
         end
       else
-        flash[:alert] = 'Item not found in the cart'
-        respond_to do |format|
-          format.html { redirect_to cart_path }
-          format.js
-        end
+        handle_item_not_found
       end
     else
-      flash[:alert] = 'Item ID not provided'
-      respond_to do |format|
-        format.html { redirect_to cart_path }
-        format.js
-      end
+      handle_missing_item_id
+    end
+  end
+  
+  private
+  
+  def find_item(item_id)
+    Item.find(item_id)
+  rescue ActiveRecord::RecordNotFound
+    nil
+  end
+  
+  def find_cart_item(item)
+    @cart.cart_items.find_by(item: item)
+  end
+  
+  def update_cart_item(cart_item)
+    cart_item.quantity -= 1
+    cart_item.quantity.zero? ? cart_item.destroy : cart_item.save
+  
+    respond_to do |format|
+      format.html {
+        flash[:notice] = 'Item removed from cart'
+        redirect_to cart_path
+      }
+      format.js
+    end
+  end
+  
+  def handle_item_not_found
+    flash[:alert] = 'Item not found in the cart'
+    respond_to do |format|
+      format.html { redirect_to cart_path }
+      format.js
+    end
+  end
+  
+  def handle_missing_item_id
+    flash[:alert] = 'Item ID not provided'
+    respond_to do |format|
+      format.html { redirect_to cart_path }
+      format.js
     end
   end
   
