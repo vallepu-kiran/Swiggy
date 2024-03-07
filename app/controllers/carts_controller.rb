@@ -51,15 +51,12 @@ class CartsController < ApplicationController
   end
   def remove_item
     item_id = params.dig(:cart_item, :item_id)
-  
     if item_id
       item = Item.find(item_id)
       cart_item = @cart.cart_items.find_by(item: item)
-  
       if cart_item
         cart_item.quantity -= 1
         cart_item.quantity.zero? ? cart_item.destroy : cart_item.save
-  
         respond_to do |format|
           format.html {
             flash[:notice] = 'Item removed from cart'
