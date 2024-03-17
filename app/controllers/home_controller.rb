@@ -2,6 +2,14 @@ class HomeController < ApplicationController
   def index
     @restaurants = Restaurant.all
     @items_in_cart = CartItem.all  
-    @total_quantity = @items_in_cart.compact.sum { |item| item.quantity.to_i }
+    if user_signed_in? 
+      @cart = current_user.cart || Cart.new
+      @items_in_cart = @cart.cart_items
+      @total_quantity = @items_in_cart.sum(&:quantity)
+    else
+      @cart = Cart.new
+      @items_in_cart = []
+      @total_quantity = 0
+    end
  end
 end

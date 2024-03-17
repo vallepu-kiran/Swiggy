@@ -1,0 +1,10 @@
+<!-- app/views/addresses/show.html.erb -->
+<h1>Address Details</h1>
+
+<p><strong>Location:</strong> <%= @address.location %></p>
+<p><strong>Landmark:</strong> <%= @address.landmark %></p>
+<p><strong>Door Number:</strong> <%= @address.door_number %></p>
+<p><strong>Address Type:</strong> <%= @address.address_type %></p>
+<p><strong>Other Address Type:</strong> <%= @address.other_address_type %></p>
+
+<%= link_to 'Back to Addresses', addresses_path %>

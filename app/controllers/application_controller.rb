@@ -1,3 +1,9 @@
-# This is a comment describing the ApplicationController class
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:User_name])
+  end
 end

@@ -15,3 +15,4 @@ if AdminUser.count == 0
         password_confirmation: 'password', 
     )
 end
+    

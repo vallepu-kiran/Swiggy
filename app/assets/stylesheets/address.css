@@ -1,0 +1,19 @@
+.a_d{
+    margin-top: 125px;
+}
+.address-type-button {
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+  ._1dzL9:hover {
+    background: #000;
+    color: #fff;
+}

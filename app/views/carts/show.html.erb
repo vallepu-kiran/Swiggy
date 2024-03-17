@@ -1,5 +1,39 @@
 <div class="row cart">
-  <div class="col-8">
+  <div class="col-8 c_j">
+    <div class="_2b4pY">
+      <i class="material-icons" style="font-size:30px;color:white;margin-left: 6px;margin-top: 7px;">place</i>
+    </div>
+    <div class="c_3">
+      <% if current_user.addresses.any? %>
+        <h5 class="ad_s">Delivery Addresses</h5>
+        
+      <% else %>
+        <h5 class="ad_s">Add a delivery address</h5>
+        <p class="_38EYL">You seem to be in a new location</p>
+      <% end %>
+
+      <div class="a_i1">
+        <div class='a_i2'>
+          <% if current_user.addresses.any? %>
+            <% current_user.addresses.each do |address| %>
+              <div class="ad_s1">
+              <span class="_2xgU6"><%= address.address_type %></span>
+              <p class="KYAcN"><%= address.location %></p>
+              </div>
+            <% end %>
+          <% else %>
+            <i class="material-icons w_1">place</i>
+            <span class="ad_p">Add New Address</span>
+            <span class="_2_VIS">+</span>
+          <% end %>
+        </div>
+       <div class="new_btn btn">
+  <button type="button" class="new_btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add New
+  </button>
+</div>
+      </div>
+    </div>
   </div>
 
   <div class="c_1 col-4" id="cart-details">
@@ -7,4 +41,59 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-slideout">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Save delivery address</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <%= form_with(model: @address, local: true) do |form| %>
+        <% if @address.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@address.errors.count, 'error') %> prohibited this address from being saved:</h2>
+      
+            <ul>
+              <% @address.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.283749175186!2d77.69526320877692!3d12.953686315221827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13cb15102ecd%3A0x1bb189727e1ca51d!2s966%2C%206th%20Main%20Rd%2C%20Marathahalli%20Village%2C%20Marathahalli%2C%20Bengaluru%2C%20Karnataka%20560037!5e0!3m2!1ste!2sin!4v1709474887003!5m2!1ste!2sin" width="468" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+      
+        <div class="field">
+         <input type="text" name="model[location]" id="model_location" class="in_put" placeholder="Enter Address">
+        </div>
+        <div class="field">
+         <input class="in_put" type="text" name="building" id="building" tabindex="1" autocomplete="off" value="" placeholder="Door/Flat no. can not be empty">
+        </div>
+      
+        <div class="field">
+          <input type="text" class="in_put" name="address[landmark]" id="address_landmark" placeholder="Landmark can not be empty">
+        </div>
+       
+        <div class="field">
+        <%= form.select :address_type, Address.address_types.keys, {}, id: 'address_type' %>
+      </div>
+      <div class="field " id="other_address_type_field" style="display: none;">
+        <input type="text" class="in_put " placeholder="Dad's home,my man cave" >
+      </div>
+      
+        <div class="actions">
+          <%= form.submit %>
+        </div>
+      <% end %>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 

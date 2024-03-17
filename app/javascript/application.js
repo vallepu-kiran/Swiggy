@@ -3,3 +3,5 @@ import "jquery"
 import "jquery_ujs"
 import "./jquery_ui"
 import "./cart.js"
+// Assuming you have jQuery included in your project
+
