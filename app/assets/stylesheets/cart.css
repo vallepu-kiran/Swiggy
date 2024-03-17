@@ -63,8 +63,219 @@
     color: #282c3f;
     padding-left: 28px;
 }
+.c_j{
+    height: 500px;
+    margin-top: 125px;
+    
+}
+.c_3{
+    background-color: white;
+     margin-left: 100px;
+     margin-right: 25px;
+     height: 450px;
+}
+._2b4pY {
+    position: absolute;
+    width: 43px;
+    height: 43px;
+    background-color: #282c3f;
+    box-shadow: 0 3px 5px 0 rgba(40,44,63,.4);
+    top: 34px;
+    left: -30px;
+    margin-left: 100px;
+    margin-top: 130px;
+}
+._1q8J4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 20px;
+}
+.ad_s{
+    margin-left: 50px;
+    padding-top: 37px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #282c3f;
+    margin-bottom: 0px;
+}
+._38EYL {
+    display: block;
+    font-size: 18px;
+    color: #7e808c;
+    font-weight: 400;
+    margin-left: 50px;
+    
+}
+._2_VIS {
+    background: #60b246;
+    width: 14px;
+    height: 14px;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    position:absolute;
+    margin-left: 35px;
+}
 
+.a_i1{
+   
+    border-style: dashed;
+    height: 240px;
+    width: 324px;
+    border: 1px solid #e9e9eb;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-top: 40px;
+}
+.w_1{
+    font-size:30px;
+    color:black;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 50px;
+}
+.ad_p{
+        margin-bottom: 4px;
+        font-size: 19px;
+        font-weight: 500;
+        color: #282c3f;
+        line-height: 1.18;
+        text-transform: capitalize;
+        margin-top:20px ;
+        margin-left: 10px;
+        height: 50px;
+    }
+.a_i2{
+    height: 140px;
+    display: flex;
+}
+.new_btn {
+    width: 130px;
+    height: 34px;
+    border: 1px solid #60b246;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-top: 7px;
+    margin-left: 65px;
+    margin-top: 25px;
+}
+.new_btn1{
+    color: #60b246;
+    text-decoration: none;
+    border: none;
+    background-color: white;
+    font-size: 14px;
+    letter-spacing: .3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+}
 
+.KYAcN {
+    font-size: 13px;
+    color: #93959f;
+    margin-bottom: 8px;
+    font-weight: 300;
+    line-height: 18px;
+    height: 64px;
+    overflow: hidden;
+    font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
+    letter-spacing: 0;
+    width: 200px;
+}
+._2xgU6 {
+    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #282c3f;
+    line-height: 1.18;
+    text-transform: capitalize;
+}
+.ad_s1{
+    margin-left: 66px;
+    margin-top: 30px;
+}
 
+/*Not Required*/
+.btn {
+    margin-bottom: 15px;
+}
+
+/*Required*/
+@media (max-width: 576px) {
+    .modal-dialog.modal-dialog-slideout {
+        width: 80%
+    }
+}
+
+.modal-dialog-slideout {
+    min-height: 100%;
+    margin: 0 auto 0 0;
+    background: #fff;
+}
+
+.modal.fade .modal-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+
+.modal.fade.show .modal-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    flex-flow: column;
+}
+
+.modal-dialog-slideout .modal-content {
+    border: 0;
+}
+
+.field {
+    border: 1px solid #d4d5d9;
+    padding: 0;
+    display: block;
+    position: relative;
+    transform: translateZ(0);
+    box-shadow: none;
+}
+.in_put{
+        background-color: transparent;
+    line-height: normal;
+    border: none;
+    outline: none;
+    height: 70px;
+    width: 100%;
+    font-size: 17px;
+    margin: 0;
+    padding: 0 20px;
+    padding-top: 22px;
+    box-shadow: none;
+    box-sizing: border-box;
+    border-radius: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+.ad_d{
+    position: relative;
+    border: 1px solid #d4d5d9;
+    height: 52px;
+    display: flex;
+}
+
+  .actions{
+    margin-top: 30px;
+  }
   
 

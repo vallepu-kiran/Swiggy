@@ -5,12 +5,27 @@ class CartsController < ApplicationController
   def show
     @items_in_cart = @cart.cart_items.includes(:item)
     @items_in_cart = current_user.cart.cart_items.includes(:item)
-    @total_quantity = @items_in_cart.compact.sum { |item| item.quantity.to_i }
-    
+    if user_signed_in? 
+      @cart = current_user.cart || Cart.new
+      @items_in_cart = @cart.cart_items
+      @total_quantity = @items_in_cart.sum(&:quantity)
+    else
+      @cart = Cart.new
+      @items_in_cart = []
+      @total_quantity = 0
+    end
+    @address ||= Address.new
   end
 
   def add_to_cart
     @item = Item.find(params[:item_id])
+    @current_restaurant = @item.restaurant
+
+    if @cart.has_items_from_different_restaurant?(@current_restaurant)
+      @cart.cart_items.destroy_all
+      flash[:notice] = 'Your cart has been cleared because you added items from a different restaurant.'
+    end
+
     @cart_item = @cart.cart_items.find_or_create_by(item: @item)
     @cart_item.increment!(:quantity)
 
@@ -19,6 +34,7 @@ class CartsController < ApplicationController
       format.js
     end
   end
+
 
   def increment_cart_quantity
     @item = Item.find(params[:id])
@@ -113,6 +129,6 @@ class CartsController < ApplicationController
   private
 
   def set_cart
-    @cart = current_user.cart || current_user.build_cart
+    @cart = current_user.cart || Cart.create!(user_id: current_user.id)
   end
 end

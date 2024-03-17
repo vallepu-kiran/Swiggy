@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'orders/index'
+  get 'orders/show'
+  get 'orders/new'
+  get 'orders/create'
+  get 'orders/edit'
+  get 'orders/update'
   get 'search/index'
   get 'items/index'
   get 'carts/show'
@@ -16,6 +22,7 @@ Rails.application.routes.draw do
     post 'decrement_cart_quantity', on: :member
   end
   get 'search', to: 'search#index'
+  resources :addresses
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

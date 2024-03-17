@@ -6,6 +6,8 @@
 <% platform_fee = 3 %>
 
 <% @cart.cart_items.each do |cart_item| %>
+  <% next if cart_item.nil? || cart_item.item.nil? || cart_item.item.restaurant.nil? || cart_item.quantity.nil? %>
+
   <% if current_restaurant != cart_item.item.restaurant.name %>
     <h5 class="n_12"> <%= cart_item.item.restaurant.name %></h5>
     <p> <%= cart_item.item.restaurant.address %></p>
@@ -34,7 +36,6 @@
     </p>
   </div>
 <% end %>
-
 
 <div>
   <h6>Bill Details</h6>

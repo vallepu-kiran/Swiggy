@@ -1,0 +1,20 @@
+<h1>Order Details</h1>
+<p>Total Amount: <%= @order.total_amount %></p>
+<p>Platform Fee: <%= @order.platform_fee %></p>
+<p>Paid Type: <%= @order.paid_type %></p>
+<p>Taxes: <%= @order.taxes %></p>
+<p>Discount: <%= @order.discount %></p>
+<p>Delivered At: <%= @order.delivered_at %></p>
+
+<h2>Order Items</h2>
+<ul>
+  <% @order.order_items.each do |item| %>
+    <li>
+      <%= item.item_name %> - Quantity: <%= item.quantity %> - Amount: <%= item.amount %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+
